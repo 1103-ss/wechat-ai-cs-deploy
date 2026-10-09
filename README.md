@@ -5,7 +5,7 @@
 
 ## 能力一览
 
-- Web 面板：机器人启停、实时日志、20 个功能配置页（状态 / 模型 / Prompt / 私聊 / 群组 / 好友 / 关键词 / 转发 / 定时消息 / 朋友圈 / 定时启停 / 记忆 / 备份 …）
+- Web 面板：机器人启停、实时日志、19 个功能配置页（状态 / 模型 / Prompt / 私聊 / 群组 / 好友 / 关键词 / 转发 / 定时消息 / 朋友圈 / 定时启停 / 记忆 / 备份 …）
 - 群聊仅被 @ 时回复、私聊自动回复、多群/多人独立 Prompt 与独立模型
 - AI 接口：OpenAI 兼容（DeepSeek 等）、Dify（知识库 RAG）、Coze，支持故障自动降级
 - 对话记忆、关键词回复、自定义转发、定时/随机消息、自动通过好友、定时启停
@@ -22,14 +22,18 @@
 ## 快速开始（新机器）
 
 > 📖 **从零开始（含 Python/微信/激活/面板每一步点击流程）请看 [使用手册.md](使用手册.md)**，国内网络直连，无需 VPN。
+> 🤖 **让 AI 助手（Trae/Cursor 等）代装**：把仓库交给它，让它读 **[AGENTS.md](AGENTS.md)** 执行即可。
 
 ```bat
-git clone https://gitee.com/<你的组织或用户名>/<仓库名>.git
-cd <仓库名>
+git clone https://github.com/1103-ss/wechat-ai-cs-deploy.git
+cd wechat-ai-cs-deploy
 scripts\install.bat
 ```
 
-install.bat 会自动：从清华镜像安装 Python 依赖（失败自动回退官方源）→ 从 `config.example.json` 生成本地配置（不覆盖已有配置）→ 运行环境体检。
+install.bat 会自动：检测 Python 3.10–3.12（缺失则从华为云/阿里云镜像下载静默安装，无需管理员权限）
+→ 从清华镜像安装 Python 依赖（失败自动回退官方源）→ 从 `config.example.json` 生成本地配置（不覆盖已有配置）
+→ 运行环境体检。需要顺带安装 Git 用 `scripts\install.bat --git`。
+拿到兼容版微信安装包后，AI 可执行 `scripts\install_wechat.ps1 -InstallerPath <安装包路径>` 辅助安装。
 
 然后：
 
@@ -52,7 +56,9 @@ SiverWXbot_plus/
 ├── config.example.json      # 配置模板（已脱敏，随仓库更新）
 ├── start.bat                # 日常启动（双击）
 ├── scripts/
-│   ├── install.bat          # 新机器一键安装
+│   ├── install.bat          # 新机器一键安装（双击；--git 顺带装 Git）
+│   ├── setup_windows.ps1   # AI/命令行引导：自动装 Python + Git + 依赖 + 体检
+│   ├── install_wechat.ps1  # 用本地兼容版安装包安装 PC 微信
 │   └── doctor.py            # 环境体检（Python/依赖/激活/微信版本/配置/实例）
 ├── config/                  # 【不入库】本地数据
 │   ├── config.json          #   全部配置（含 API Key，绝不提交）
