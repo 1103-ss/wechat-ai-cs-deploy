@@ -17,6 +17,9 @@
 
 ## 标准部署流程
 
+> 给最终用户的图文全流程（Gitee 克隆、国内镜像、面板逐页操作）维护在 `使用手册.md`，用户问"怎么装/怎么用面板"时直接引用它，不要另写一套。
+> 代码主分发渠道为 Gitee 私有仓库（国内无 VPN 场景）；install.bat 已默认走清华 pip 镜像并回退官方源。
+
 1. `scripts\install.bat`（装依赖、生成 config/config.json、跑 doctor）
 2. `python scripts\doctor.py` 确认 PASS/WARN 项，FAIL 必须解决
 3. 引导用户完成两件 AI 无法代办的事：wxautox4 激活、安装兼容版微信

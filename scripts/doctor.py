@@ -107,6 +107,8 @@ def check_wechat_version():
                 ver = winreg.QueryValueEx(sk, "DisplayVersion")[0]
             except OSError:
                 continue
+            if ("企业微信" in name or "WeCom" in name):
+                continue
             if ("微信" in name or "Weixin" in name or "WeChat" in name) and ver:
                 found.append(ver)
     if not found:

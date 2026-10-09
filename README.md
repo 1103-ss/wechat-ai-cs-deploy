@@ -21,13 +21,15 @@
 
 ## 快速开始（新机器）
 
+> 📖 **从零开始（含 Python/微信/激活/面板每一步点击流程）请看 [使用手册.md](使用手册.md)**，国内网络直连，无需 VPN。
+
 ```bat
-git clone <你的私有仓库地址>
-cd SiverWXbot_plus
+git clone https://gitee.com/<你的组织或用户名>/<仓库名>.git
+cd <仓库名>
 scripts\install.bat
 ```
 
-install.bat 会自动：安装 Python 依赖 → 从 `config.example.json` 生成本地配置 → 运行环境体检。
+install.bat 会自动：从清华镜像安装 Python 依赖（失败自动回退官方源）→ 从 `config.example.json` 生成本地配置（不覆盖已有配置）→ 运行环境体检。
 
 然后：
 

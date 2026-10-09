@@ -18,9 +18,13 @@ if errorlevel 1 (
   exit /b 1
 )
 
-echo [1/3] Installing Python dependencies...
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+echo [1/3] Installing Python dependencies (Tsinghua mirror first)...
+python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
+python -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+if errorlevel 1 (
+  echo [WARN] Tsinghua mirror failed, trying official PyPI...
+  python -m pip install -r requirements.txt
+)
 if errorlevel 1 (
   echo [ERROR] pip install failed. Check network and re-run this script.
   pause
